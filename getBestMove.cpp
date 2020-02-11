@@ -14,47 +14,61 @@ namespace shogi{
 		Field() {
 			initialize();
 		}
+		Field(vector<string> tokens) {
+			initialize();
 
+		}
 	private:
-		Koma koma[9][9];
+		Koma koma[9 + 1][9 + 1];
 
 		void initialize() {
 			//ïàñ Çèâä˙âª
 			//å„éË
-			koma[0][0] = Koma::g_kyou;
-			koma[0][1] = Koma::g_kei;
-			koma[0][2] = Koma::g_gin;
-			koma[0][3] = Koma::g_kin;
-			koma[0][4] = Koma::g_ou;
-			koma[0][5] = Koma::g_kin;
-			koma[0][6] = Koma::g_gin;
-			koma[0][7] = Koma::g_kei;
-			koma[0][8] = Koma::g_kyou;
+			koma[1][1] = Koma::g_kyou;
+			koma[1][2] = Koma::g_kei;
+			koma[1][3] = Koma::g_gin;
+			koma[1][4] = Koma::g_kin;
+			koma[1][5] = Koma::g_ou;
+			koma[1][6] = Koma::g_kin;
+			koma[1][7] = Koma::g_gin;
+			koma[1][8] = Koma::g_kei;
+			koma[1][9] = Koma::g_kyou;
 
-			koma[1][1] = Koma::g_hi;
-			koma[1][7] = Koma::g_kaku;
+			koma[2][2] = Koma::g_kaku;
+			koma[2][8] = Koma::g_hi;
 
-			for (int i = 0; i < 9; ++i) {
-				koma[2][i] = Koma::g_fu;
+			for (int i = 1; i <= 9; ++i) {
+				koma[3][i] = Koma::g_fu;
 			}
 
 			//êÊéË
-			koma[8][0] = Koma::s_kyou;
-			koma[8][1] = Koma::s_kei;
-			koma[8][2] = Koma::s_gin;
-			koma[8][3] = Koma::s_kin;
-			koma[8][4] = Koma::s_ou;
-			koma[8][5] = Koma::s_kin;
-			koma[8][6] = Koma::s_gin;
-			koma[8][7] = Koma::s_kei;
-			koma[8][8] = Koma::s_kyou;
+			koma[9][1] = Koma::s_kyou;
+			koma[9][2] = Koma::s_kei;
+			koma[9][3] = Koma::s_gin;
+			koma[9][4] = Koma::s_kin;
+			koma[9][5] = Koma::s_ou;
+			koma[9][6] = Koma::s_kin;
+			koma[9][7] = Koma::s_gin;
+			koma[9][8] = Koma::s_kei;
+			koma[9][9] = Koma::s_kyou;
 
-			koma[7][1] = Koma::s_kaku;
-			koma[7][7] = Koma::s_hi;
+			koma[8][2] = Koma::s_hi;
+			koma[8][8] = Koma::s_kaku;
 			
 			for (int i = 0; i < 9; ++i) {
-				koma[6][i] = Koma::s_fu;
+				koma[7][i] = Koma::s_fu;
 			}
+
+		}
+
+		void moveKoma(const string token) {
+			int s[4]{
+				token.c_str()[0] - '0',
+				token.c_str()[1],
+				token.c_str()[2],
+				token.c_str()[3],
+			};
+
 
 		}
 	};
