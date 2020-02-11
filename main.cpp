@@ -6,6 +6,11 @@
 
 using namespace std;
 
+//message to gui
+inline void mtg(string s) {
+	cout << s << endl;
+}
+
 void choiceAction(const vector<string> const &tokens) {
 	//何も受信できなかったら再び待つ
 	if (tokens.empty()) {
@@ -16,13 +21,14 @@ void choiceAction(const vector<string> const &tokens) {
 
 	//通信開始時
 	if (o == "usi") {
-		cout << "id name kumesan'sShogi" << endl;
-		cout << "id author kumesan" << endl;
+		mtg("id name kumesan'sShogi");
+		mtg("id author kumesan");
 
-		cout << "usiok" << endl;
+		mtg("usiok");
 	}
 	else if (o == "isready") {
-		cout << "readyok" << endl;
+		//cout << "readyok" << endl;
+		mtg("readyok");
 	}
 }
 
