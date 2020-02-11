@@ -27,8 +27,10 @@ void choiceAction(const vector<string> const &tokens) {
 		mtg("usiok");
 	}
 	else if (o == "isready") {
-		//cout << "readyok" << endl;
 		mtg("readyok");
+	}
+	else if (o == "go") {
+		mtg("bestmove 3c3d");
 	}
 }
 
