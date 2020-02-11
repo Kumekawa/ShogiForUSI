@@ -12,12 +12,17 @@ void choiceAction(const vector<string> const &tokens) {
 		return;
 	}
 
+	string o = tokens[0];
+
 	//’ÊMŠJn
-	if (tokens[0] == "usi") {
+	if (o == "usi") {
 		cout << "id name kumesan'sShogi" << endl;
 		cout << "id author kumesan" << endl;
 
 		cout << "usiok" << endl;
+	}
+	else if (o == "isready") {
+		cout << "readyok" << endl;
 	}
 }
 
