@@ -21,8 +21,8 @@ int main(void) {
 			continue;
 		}
 		if (tokens[0] == "usi") {
-			cout << "id name kumekawa'sShogi" << endl;
-			cout << "id author kumekawa" << endl;
+			cout << "id name kumesan'sShogi" << endl;
+			cout << "id author kumesan" << endl;
 
 			cout << "usiok" << endl;
 		}
