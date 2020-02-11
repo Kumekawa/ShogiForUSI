@@ -6,7 +6,8 @@ namespace shogi{
 		s_fu,s_kyou,s_kei,s_gin,s_kaku,s_hi,s_kin,s_ou,
 		s_nFu,s_nKyou,s_nKei,s_nGin,s_nKaku,s_nHi,
 		g_fu,g_kyou,g_kei,g_gin,g_kaku,g_hi,g_kin,g_ou,
-		g_nFu,g_nKyou,g_nKei,g_nGin,g_nKaku,g_nHi
+		g_nFu,g_nKyou,g_nKei,g_nGin,g_nKaku,g_nHi,
+		none
 	};
 
 	class Field{
@@ -22,6 +23,12 @@ namespace shogi{
 		Koma koma[9 + 1][9 + 1];
 
 		void initialize() {
+			for (int i = 0; i < 10; ++i) {
+				for (int j = 0; j < 10; ++j) {
+					koma[i][j] = Koma::none;
+				}
+			}
+
 			//•ˆ–Ê‚ð‰Šú‰»
 			//ŒãŽè
 			koma[1][1] = Koma::g_kyou;
@@ -64,12 +71,15 @@ namespace shogi{
 		void moveKoma(const string token) {
 			int s[4]{
 				token.c_str()[0] - '0',
-				token.c_str()[1],
-				token.c_str()[2],
-				token.c_str()[3],
+				token.c_str()[1] - 'a' + 1,
+				token.c_str()[2] - '0',
+				token.c_str()[3] - 'a' + 1,
 			};
 
-
+			//‚Æ‚è‚ ‚¦‚¸ƒRƒ}‚Ì“üŽè‚Í–³Ž‹‚·‚é
+			Koma k = koma[s[1]][s[0]];
+			koma[s[1]][s[0]] = Koma::none;
+			koma[s[3]][s[2]] = k;
 		}
 	};
 }
