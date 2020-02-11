@@ -17,7 +17,7 @@ namespace shogi {
 	private:
 		Koma koma[9 + 1][9 + 1];
 
-		void initialize();
+		void initializePos();
 
 		void moveKoma(const std::string token);
 	};

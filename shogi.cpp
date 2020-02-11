@@ -2,10 +2,17 @@
 using namespace std;
 
 void shogi::Field::setPosition(vector<string> tokens) {
-
+	for (int i = 1; i < tokens.size(); ++i) {
+		if (tokens[i] == "startpos") {
+			initializePos();
+		}
+		else if (tokens[i] != "moves") {
+			moveKoma(tokens[i]);
+		}
+	}
 }
 
-void shogi::Field::initialize() {
+void shogi::Field::initializePos() {
 	for (int i = 0; i < 10; ++i) {
 		for (int j = 0; j < 10; ++j) {
 			koma[i][j] = Koma::none;
@@ -48,7 +55,7 @@ void shogi::Field::initialize() {
 	for (int i = 0; i < 9; ++i) {
 		koma[7][i] = Koma::s_fu;
 	}
-
+	
 }
 
 void shogi::Field::moveKoma(const string token) {

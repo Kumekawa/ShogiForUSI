@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include "getBestMove.h"
+#include "shogi.h"
 using namespace std;
 
 //message to gui
@@ -12,6 +13,8 @@ inline void mtg(string s) {
 }
 
 void choiceAction(const vector<string> const &tokens) {
+	static shogi::Field field;
+
 	//‰½‚àóM‚Å‚«‚È‚©‚Á‚½‚çÄ‚Ñ‘Ò‚Â
 	if (tokens.empty()) {
 		return;
@@ -28,6 +31,9 @@ void choiceAction(const vector<string> const &tokens) {
 	}
 	else if (o == "isready") {
 		mtg("readyok");
+	}
+	else if (o == "position") {
+		field.setPosition(tokens);
 	}
 	else if (o == "go") {
 		mtg(getBestMove(tokens));
