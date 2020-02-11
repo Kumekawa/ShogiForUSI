@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
-
+#include "getBestMove.h"
 using namespace std;
 
 //message to gui
@@ -30,7 +30,7 @@ void choiceAction(const vector<string> const &tokens) {
 		mtg("readyok");
 	}
 	else if (o == "go") {
-		mtg("bestmove 3c3d");
+		mtg(getBestMove(tokens));
 	}
 }
 
