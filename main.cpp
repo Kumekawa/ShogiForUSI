@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void choiceAction(vector<string> tokens) {
+void choiceAction(const vector<string> const &tokens) {
 	//何も受信できなかったら再び待つ
 	if (tokens.empty()) {
 		return;
@@ -21,19 +21,26 @@ void choiceAction(vector<string> tokens) {
 	}
 }
 
+void getGUIMessage(vector<string> &tokens) {
+	string usiIn;
+	//GUIから受信
+	getline(cin, usiIn);
+
+	//vector<string> tokens;
+	stringstream sts(usiIn);
+	string token;
+	//GUIから受信した文字列を空白で区切る
+	while (getline(sts, token, ' ')) {
+		tokens.push_back(token);
+	}
+}
+
 int main(void) {
 	while (true) {
-		string usiIn;
 		//GUIから受信
-		getline(cin, usiIn);
-
 		vector<string> tokens;
-		stringstream sts(usiIn);
-		string token;
-		//GUIから受信した文字列を空白で区切る
-		while (getline(sts, token, ' ')) {
-			tokens.push_back(token);
-		}
+		getGUIMessage(tokens);
+
 		//受信した内容によって動作を決定する
 		choiceAction(tokens);
 	}
