@@ -6,6 +6,21 @@
 
 using namespace std;
 
+void choiceAction(vector<string> tokens) {
+	//何も受信できなかったら再び待つ
+	if (tokens.empty()) {
+		return;
+	}
+
+	//通信開始時
+	if (tokens[0] == "usi") {
+		cout << "id name kumesan'sShogi" << endl;
+		cout << "id author kumesan" << endl;
+
+		cout << "usiok" << endl;
+	}
+}
+
 int main(void) {
 	while (true) {
 		string usiIn;
@@ -19,17 +34,8 @@ int main(void) {
 		while (getline(sts, token, ' ')) {
 			tokens.push_back(token);
 		}
-		//何も受信できなかったら再び待つ
-		if (tokens.empty()) {
-			continue;
-		}
-		//受信内容によって動作変更
-		if (tokens[0] == "usi") {
-			cout << "id name kumesan'sShogi" << endl;
-			cout << "id author kumesan" << endl;
-
-			cout << "usiok" << endl;
-		}
+		//受信した内容によって動作を決定する
+		choiceAction(tokens);
 	}
 
 	return 0;
